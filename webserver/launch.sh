@@ -10,7 +10,7 @@ sudo mln start -p project
 echo "Waiting 40 seconds for intstances to deploy..."
 sleep 40
 
-sudo mln status -p project1
+sudo mln status -p project
 
 VAR=true
 
