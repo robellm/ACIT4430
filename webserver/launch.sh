@@ -15,7 +15,7 @@ sudo mln status -p project1
 VAR=true
 
 while $VAR; do
-if sudo mln status -p project1 | grep -q "down"; then
+if sudo mln status -p project | grep -q "down"; then
     echo "One or more instances down."
     echo "Rebuilding project and instances..."
     sudo mln remove -p project -f
