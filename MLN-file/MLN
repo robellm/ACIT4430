@@ -5,10 +5,10 @@ global {
 superclass common {
         openstack {
                 user_data {
-                        adduser --disabled-password --gecos "" bob
-                        adduser --disabled-password --gecos "" janet
-                        adduser --disabled-password --gecos "" alice
-                        adduser --disabled-password --gecos "" tim
+                        adduser --disabled-password --gecos "" --shell /bin/bash bob
+                        adduser --disabled-password --gecos "" --shell /bin/bash janet
+                        adduser --disabled-password --gecos "" --shell /bin/bash alice
+                        adduser --disabled-password --gecos "" --shell /bin/bash tim
                         echo bob:U6aMy0wojraho | sudo chpasswd -e
                         echo janet:U6aMy0wojraho | sudo chpasswd -e
                         echo alice:U6aMy0wojraho | sudo chpasswd -e
@@ -16,19 +16,22 @@ superclass common {
                         addgroup developers
                         adduser janet developers
                         adduser tim developers
-                        echo developers:U6aMy0wojraho | sudo chpasswd -e
+                        usermod -aG sudo bob
+                        usermod -aG sudo janet
+                        usermod -aG sudo alice
+                        usermod -aG sudo tim
                         apt-get update
                         wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
                         dpkg -i puppetlabs-release-pc1-xenial.deb
                         apt-get update
                         apt-get -y install puppet-agent
                         echo "10.0.53.115 master16.openstacklocal master16" >> /etc/hosts
-                        wget https://raw.githubusercontent.com/robellm/ACIT-4430/main/manifests/testagent.pp
-                        /opt/puppetlabs/puppet/bin/puppet apply testagent.pp
+                        wget https://raw.githubusercontent.com/robellm/ACIT4430/main/webserver/agent.pp
+                        /opt/puppetlabs/puppet/bin/puppet apply agent.pp
                 }
                 image Ubuntu16.04
                 flavor m1.small
-                keypair master16key
+                keypair rootkey
         }
         network eth0 {
                 net netsys_net
@@ -59,4 +62,8 @@ host vm_compiler-server1 {
 host vm_compiler-server2 {
         superclass common
         find /etc/puppetlabs/puppet/ssl -name vm-compiler-server2.pem -delete
+}
+host vm_default {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl -name vm-default.pem -delete
 }
