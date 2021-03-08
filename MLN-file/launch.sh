@@ -1,46 +1,52 @@
 #!/bin/bash
-
-echo "Building MLN"
+echo " "
+echo "Building MLN now ... "
+echo " "
 sleep 2
-mln build -f ./project.mln
-echo "\n\n\n "
+mln build -f project.mln
+echo " "
+echo " "
 
-echo "Starting MLN"
-sleep 3
+echo "Starting MLN now ... "
+echo " "
 mln start -p project
-echo "\n\n\n"
+echo " "
+echo " "
 
-echo "Waiting 10 seconds for intstances to deploy..."
-sleep 10
+echo "The current status of MLN ... "
+echo " "
+sleep 1
 mln status -p project
 
 VAR=true
 
 while $VAR; do
-if sudo mln status -p project | grep -q "down"; then
-    echo "\n\n"
-    echo "One or more instances down.."
+if mln status -p project | grep -q "down"; then
+    echo " "
+    echo "One or more instances are down .. "
     echo "Rebuilding project and instances..."
-    sleep 2
-    mln remove -p project
-    sleep 5
-    mln build -f ./project.mln
-    sleep 5
+    echo " "
     mln start -p project
-    echo "\n\n"
-    echo "Letting instaces start up.. 10 seconds..."
-    sleep 10
+    sleep 5
+    mln status -p project
 else
+    echo " "
     echo "Finished"
+    echo "ALL instances are up & running correctly"
     VAR=false
 fi
 done
 
-echo "Signing CERTIFICATES FROM THE AGENT"
-sleep 2
+echo " "
+echo "Signing CERTIFICATES FROM THE AGENTS.. PLEASE WAIT A FEW SEC'S"
+echo " "
+sleep 10
 /opt/puppetlabs/puppet/bin/puppet cert sign --all
-echo "\n\n"
-sleep 3
-echo "Listing All the signed certificates"
+echo " "
+echo " "
+sleep 2
+echo "Listing ALL the signed certificates"
+echo " "
 sleep 2
 /opt/puppetlabs/puppet/bin/puppet cert list --all
+echo " "
