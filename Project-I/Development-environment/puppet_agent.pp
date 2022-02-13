@@ -5,7 +5,7 @@ $interval = "600"
 host { 'master10.openstacklocal':
         name => $master,
         ensure => present,
-        host_aliases => "master20",
+        host_aliases => "master10",
         ip => $master_ip
 }
 augeas { "puppet_default":
