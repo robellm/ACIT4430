@@ -7,14 +7,13 @@ user { 'kirk':
       groups => ['sudo', 'storage-admins'],
       comment => "This is Kirk's account"
       managehome => true,
-      password => 'BobbyB', }
+      password => 'Kirk', }
 
 user { 'rich':
       ensure => present,
       home => '/home/rich',
       groups => ['sudo', 'storage-admins'],
-      comment => "This is Janet's account"
+      comment => "This is Rich's account"
       managehome => true,
-      home => '/home/janet',
-      password => 'JennyJ', }
+      password => 'RICKY', }
       
