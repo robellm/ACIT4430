@@ -20,23 +20,23 @@ superclass common {
                 address dhcp }
 }
 
-host vm_storage-server1 {
+host vm_storage-server-1 {
         superclass common
-        find /etc/puppetlabs/puppet/ssl -name vm-storage-server2.pem -delete }
-host vm_storage-server2 {
+        find /etc/puppetlabs/puppet/ssl -name vm-storage-server-1.pem -delete }
+host vm_storage-server-2 {
         superclass common
-        find /etc/puppetlabs/puppet/ssl -name vm-storage-server2.pem -delete }
+        find /etc/puppetlabs/puppet/ssl -name vm-storage-server-2.pem -delete }
         
-host vm_developer-server1 {
+host vm_developer-server-1 {
         superclass common
-        find /etc/puppetlabs/puppet/ssl -name vm-developer-server1.pem -delete }
+        find /etc/puppetlabs/puppet/ssl -name vm-developer-server-1.pem -delete }
 host vm_developer-server2 {
         superclass common
-        find /etc/puppetlabs/puppet/ssl -name vm-developer-server2.pem -delete }
+        find /etc/puppetlabs/puppet/ssl -name vm-developer-server-2.pem -delete }
         
-host vm_compiler-server1 {
+host vm_compiler-server-1 {
         superclass common
-        find /etc/puppetlabs/puppet/ssl -name vm-compiler-server1.pem -delete }
-host vm_compiler-server2 {
+        find /etc/puppetlabs/puppet/ssl -name vm-compiler-server-1.pem -delete }
+host vm_compiler-server-2 {
         superclass common
-        find /etc/puppetlabs/puppet/ssl -name vm-compiler-server2.pem -delete }
+        find /etc/puppetlabs/puppet/ssl -name vm-compiler-server-2.pem -delete }
