@@ -1,7 +1,7 @@
 package { "gcc":
         ensure => present, }
         
-package { "build-essential":
+package { "make":
         ensure => present, }
         
 package { "binutils":
