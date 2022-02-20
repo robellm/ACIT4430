@@ -1,11 +1,11 @@
-$master = "development-environment.openstacklocal"
+$master = "storage-environment.openstacklocal"
 $master_ip = "10.0.65.105"
 $interval = "600"
 
-host { 'development-environment.openstacklocal':
+host { 'storage-environment.openstacklocal':
         name => $master,
         ensure => present,
-        host_aliases => "development-environment",
+        host_aliases => "storage-environment",
         ip => $master_ip
 }
 augeas { "puppet_default":
