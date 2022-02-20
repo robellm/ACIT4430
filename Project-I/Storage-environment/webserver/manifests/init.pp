@@ -4,14 +4,11 @@ class webserver {
                  ensure => present, }
       
       service { "apache2":
-              ensure => running,
-              require => Package["apache2"], }
+              ensure => running, }
               
-      package { "php":
+      package { "php7.4-fpm":
               ensure => present, }
       
-      service { "php":
-              ensure => running,
-              require => Package["php"], }
-}        
+      service { "php7.4-fpm":
+              ensure => running, }        
 }
