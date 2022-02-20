@@ -1,4 +1,5 @@
 class users {
+
         group { "developers":
                 ensure => present, }
 
