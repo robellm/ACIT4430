@@ -1,2 +1,0 @@
-package { "pound":
-          ensure => present, }
