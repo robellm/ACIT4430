@@ -1,0 +1,44 @@
+global {
+        project project }
+
+superclass common {
+        openstack {
+                user_data {
+                        apt-get update
+                        wget http://apt.puppetlabs.com/puppet6-release-focal.deb
+                        dpkg -i puppet6-release-focal.deb
+                        apt-get update
+                        apt-get -y install puppet-agent
+                        echo "10.0.65.105 storage-environment.openstacklocal storage-environment" >> /etc/hosts
+                        wget https://raw.githubusercontent.com/robellm/ACIT4430/main/Project-I/Storage-environment/puppet_agent.pp
+                        /opt/puppetlabs/puppet/bin/puppet apply puppet_agent.pp }
+                image Ubuntu-20.04-LTS
+                flavor m1.small
+                keypair master20key }
+        network eth0 {
+                net netsys_net
+                address dhcp } }
+
+host vm_storage-server-1 {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl/certs -name vm-storage-server-1.pem -delete }
+host vm_storage-server-2 {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl/certs -name vm-storage-server-2.pem -delete }
+host vm_storage-server-3 {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl/certs -name vm-storage-server-3.pem -delete }
+host vm_storage-server-4 {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl/certs -name vm-storage-server-4.pem -delete }
+
+host vm_backup-server-1 {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl/certs -name vm-backup-server-1.pem -delete }
+host vm_backup-server-2 {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl/certs -name vm-backup-server-2.pem -delete }
+
+host vm_webserver {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl/certs -name vm-webserver.pem -delete }
