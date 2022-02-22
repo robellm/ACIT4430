@@ -31,3 +31,4 @@ class users {
                 managehome => true,
                 comment => " This is Kates' account ",
                 password => '', }
+}
