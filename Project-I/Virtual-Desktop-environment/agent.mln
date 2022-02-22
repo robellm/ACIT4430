@@ -14,7 +14,7 @@ superclass common {
                         /opt/puppetlabs/puppet/bin/puppet apply puppet_agent.pp }
                 image Ubuntu-20.04-LTS
                 flavor m1.small
-                keypair master30key }
+                keypair master40key }
         network eth0 {
                 net netsys_net
                 address dhcp }
