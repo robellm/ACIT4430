@@ -1,0 +1,33 @@
+global {
+        project project }
+
+superclass common {
+        openstack {
+                user_data {
+                        apt-get update
+                        wget http://apt.puppetlabs.com/puppet6-release-focal.deb          
+                        dpkg -i puppet6-release-focal.deb
+                        apt-get update
+                        apt-get install puppet-agent -y
+                        echo "10.0.65.186 virtual-desktop-environment.openstacklocal virtual-desktop-environment" >> /etc/hosts
+                        wget https://raw.githubusercontent.com/robellm/ACIT4430/main/Project-I/Website-environment/puppet_agent.pp
+                        /opt/puppetlabs/puppet/bin/puppet apply puppet_agent.pp }
+                image Ubuntu-20.04-LTS
+                flavor m1.small
+                keypair master30key }
+        network eth0 {
+                net netsys_net
+                address dhcp }
+}
+
+host vm_virtual-machine {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl -name vm-virtual-machine.pem -delete }
+        
+host vm_storage-server {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl -name vm-storage-server.pem -delete }
+        
+host vm_database-server {
+        superclass common
+        find /etc/puppetlabs/puppet/ssl -name vm-database-server.pem -delete }
