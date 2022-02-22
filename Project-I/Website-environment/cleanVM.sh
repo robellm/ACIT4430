@@ -14,12 +14,13 @@ echo -e "\n"
 echo " ------------ ....... REMOVING CERTIFICATES FROM AGENTS ....... ----------- "
 echo -e "\n"
 sleep 3
-/opt/puppetlabs/bin/puppetserver ca clean --certname vm-storage-server-1
-/opt/puppetlabs/bin/puppetserver ca clean --certname vm-storage-server-2
-/opt/puppetlabs/bin/puppetserver ca clean --certname vm-developer-server-1
-/opt/puppetlabs/bin/puppetserver ca clean --certname vm-developer-server-2
-/opt/puppetlabs/bin/puppetserver ca clean --certname vm-compiler-server-1
-/opt/puppetlabs/bin/puppetserver ca clean --certname vm-compiler-server-2
+/opt/puppetlabs/bin/puppetserver ca clean --certname vm-loadbalancer
+/opt/puppetlabs/bin/puppetserver ca clean --certname vm-database-server-1
+/opt/puppetlabs/bin/puppetserver ca clean --certname vm-database-server-2
+/opt/puppetlabs/bin/puppetserver ca clean --certname vm-webserver-1
+/opt/puppetlabs/bin/puppetserver ca clean --certname vm-webserver-2
+/opt/puppetlabs/bin/puppetserver ca clean --certname vm-nodejs
+/opt/puppetlabs/bin/puppetserver ca clean --certname vm-machine
 echo -e "\n"
 sleep 3
 echo " -------------- ......... Certificates REMOVED! ......... ---------------- "
